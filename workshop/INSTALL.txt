@@ -1,0 +1,159 @@
+GK2 Move Buildings — installation guide
+=======================================
+
+Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=3809174815
+Source code:    https://github.com/undergodst/gk2-move-buildings
+
+(Русская версия ниже.)
+
+
+ENGLISH
+=======
+
+This is a code mod. It needs BepInEx, a mod loader that is installed once into
+the game folder. The Workshop can't install BepInEx for you.
+
+0. Back up your save
+--------------------
+Close the game and copy this folder somewhere safe:
+    C:\Users\<your name>\AppData\LocalLow\Lazy Bear Games\Graveyard Keeper 2
+(Press Win+R, paste %USERPROFILE%\AppData\LocalLow\Lazy Bear Games and press Enter.)
+
+1. Install BepInEx (one time)
+-----------------------------
+1. Download BepInEx_win_x64_5.4.23.5.zip:
+   https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.5  (section "Assets")
+   Exactly version 5.4.23.5, win_x64. BepInEx 6 does NOT work.
+2. Open the game folder: in Steam right-click Graveyard Keeper 2 > Manage >
+   Browse local files. It's the folder with GraveyardKeeper2.exe.
+3. Extract the zip into that folder. Afterwards these must sit right next to
+   GraveyardKeeper2.exe (not inside another subfolder):
+       BepInEx\
+       winhttp.dll
+       doorstop_config.ini
+4. Start the game once, wait for the main menu, close it.
+   Check: the BepInEx folder now contains LogOutput.log, config\ and plugins\.
+
+2. Install the mod — pick ONE way
+---------------------------------
+A) Automatically, with GK2 Workshop Loader (recommended)
+   1. Subscribe to Workshop Loader:
+      https://steamcommunity.com/sharedfiles/filedetails/?id=3807346541
+   2. Open its folder:
+      <Steam folder>\steamapps\workshop\content\4358690\3807346541
+      Copy the BepInEx folder from there into the game folder, choose
+      Replace/merge. Result: BepInEx\patchers\GK2_WorkshopLoader.dll
+   3. Subscribe to GK2 Move Buildings.
+   4. Start the game. The loader asks whether to allow the mod: click Yes.
+      If the game seems stuck at start, the dialog is behind it: press Alt+Tab.
+   Updates arrive through Steam; the loader asks again after each update.
+
+B) Manually
+   1. Subscribe to GK2 Move Buildings (or download it from GitHub).
+   2. Open <Steam folder>\steamapps\workshop\content\4358690\3809174815
+   3. Copy the folder BepInEx\plugins\GK2MoveBuildings into
+      <game folder>\BepInEx\plugins\
+      Result: <game folder>\BepInEx\plugins\GK2MoveBuildings\GK2MoveBuildings.dll
+   After a mod update, copy the folder again.
+   Don't use both ways at once.
+
+3. Check that it works
+----------------------
+Start the game, open a building table: next to "Remove" there is a blue
+"Move" tile. BepInEx\LogOutput.log contains the line
+    GK2 Move Buildings x.x.x loaded
+
+4. Uninstall
+------------
+Unsubscribe (way A) or delete <game folder>\BepInEx\plugins\GK2MoveBuildings
+(way B). Your save is not affected. To remove BepInEx itself, delete BepInEx\,
+winhttp.dll and doorstop_config.ini from the game folder.
+
+5. Troubleshooting
+------------------
+- No LogOutput.log after starting the game: BepInEx isn't running. winhttp.dll
+  and the BepInEx folder must be directly next to GraveyardKeeper2.exe. Some
+  antivirus programs delete winhttp.dll: add an exception and extract again.
+- Log exists but no "Move" tile: search the log for "GK2 Move Buildings". If it
+  isn't there, the DLL is in the wrong folder (it must be under BepInEx\plugins).
+  With the loader: the loader DLL must be in BepInEx\patchers, not plugins.
+- Linux / Steam Deck (Proton): set the launch options to
+      WINEDLLOVERRIDES="winhttp=n,b" %command%
+- Found a bug? Post in the "Bug reports" discussion with a description and the
+  log (BepInEx\LogOutput.log, uploaded to pastebin.com).
+
+
+РУССКИЙ
+=======
+
+Это мод с кодом. Ему нужен BepInEx — загрузчик модов, который один раз ставится
+в папку игры. Мастерская сама его не устанавливает.
+
+0. Сделайте копию сейва
+-----------------------
+Закройте игру и скопируйте в надёжное место папку:
+    C:\Users\<ваше имя>\AppData\LocalLow\Lazy Bear Games\Graveyard Keeper 2
+(Нажмите Win+R, вставьте %USERPROFILE%\AppData\LocalLow\Lazy Bear Games и Enter.)
+
+1. Установите BepInEx (один раз)
+--------------------------------
+1. Скачайте BepInEx_win_x64_5.4.23.5.zip:
+   https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.5  (раздел "Assets")
+   Именно версию 5.4.23.5, win_x64. BepInEx 6 НЕ подходит.
+2. Откройте папку игры: в Steam правой кнопкой по Graveyard Keeper 2 >
+   Управление > Просмотреть локальные файлы. Это папка с GraveyardKeeper2.exe.
+3. Распакуйте архив в эту папку. После этого рядом с GraveyardKeeper2.exe
+   (а не во вложенной папке) должны лежать:
+       BepInEx\
+       winhttp.dll
+       doorstop_config.ini
+4. Запустите игру один раз, дождитесь главного меню, закройте.
+   Проверка: в папке BepInEx появились LogOutput.log, config\ и plugins\.
+
+2. Установите мод — выберите ОДИН способ
+----------------------------------------
+А) Автоматически, через GK2 Workshop Loader (рекомендуется)
+   1. Подпишитесь на Workshop Loader:
+      https://steamcommunity.com/sharedfiles/filedetails/?id=3807346541
+   2. Откройте его папку:
+      <папка Steam>\steamapps\workshop\content\4358690\3807346541
+      Скопируйте оттуда папку BepInEx в папку игры, выберите «Заменить/объединить».
+      Итог: BepInEx\patchers\GK2_WorkshopLoader.dll
+   3. Подпишитесь на GK2 Move Buildings.
+   4. Запустите игру. Загрузчик спросит, разрешить ли мод: нажмите Yes (Да).
+      Если игра будто зависла на старте, окно спряталось за ней: нажмите Alt+Tab.
+   Обновления приходят через Steam, после каждого загрузчик спросит снова.
+
+Б) Вручную
+   1. Подпишитесь на GK2 Move Buildings (или скачайте с GitHub).
+   2. Откройте <папка Steam>\steamapps\workshop\content\4358690\3809174815
+   3. Скопируйте папку BepInEx\plugins\GK2MoveBuildings в
+      <папка игры>\BepInEx\plugins\
+      Итог: <папка игры>\BepInEx\plugins\GK2MoveBuildings\GK2MoveBuildings.dll
+   После обновления мода скопируйте папку заново.
+   Не используйте оба способа одновременно.
+
+3. Проверьте, что работает
+--------------------------
+Запустите игру и откройте стол строительства: рядом с «Убрать» появится синяя
+плитка «Переместить». В BepInEx\LogOutput.log есть строка
+    GK2 Move Buildings x.x.x loaded
+
+4. Удаление
+-----------
+Отпишитесь (способ А) или удалите <папка игры>\BepInEx\plugins\GK2MoveBuildings
+(способ Б). Сохранения не пострадают. Чтобы удалить сам BepInEx, удалите из
+папки игры BepInEx\, winhttp.dll и doorstop_config.ini.
+
+5. Если не работает
+-------------------
+- После запуска нет LogOutput.log: BepInEx не запустился. winhttp.dll и папка
+  BepInEx должны лежать прямо рядом с GraveyardKeeper2.exe. Некоторые
+  антивирусы удаляют winhttp.dll: добавьте исключение и распакуйте заново.
+- Лог есть, а плитки «Переместить» нет: найдите в логе "GK2 Move Buildings".
+  Если строки нет, dll лежит не там (она должна быть внутри BepInEx\plugins).
+  С загрузчиком: dll загрузчика должна быть в BepInEx\patchers, а не в plugins.
+- Linux / Steam Deck (Proton): в параметрах запуска укажите
+      WINEDLLOVERRIDES="winhttp=n,b" %command%
+- Нашли баг? Напишите в обсуждении «Bug reports» с описанием и логом
+  (BepInEx\LogOutput.log, залитым на pastebin.com).
