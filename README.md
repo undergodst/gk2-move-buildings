@@ -4,6 +4,15 @@ BepInEx 5 mod for Graveyard Keeper 2 that adds a **Move** tile next to **Remove*
 
 **Steam Workshop:** https://steamcommunity.com/sharedfiles/filedetails/?id=3809174815
 
+## Quick install
+
+Download [install.bat](https://github.com/undergodst/gk2-move-buildings/releases/latest/download/install.bat) and double-click it. It finds the game, installs BepInEx 5.4.23.5
+(checksum-verified, from the official GitHub release) and GK2 Workshop Loader, then opens the mod's Workshop page
+so you can subscribe. Run it again any time; it skips what is already installed. Open it in Notepad to see exactly what it does.
+
+Manual install without the Workshop: download `GK2MoveBuildings-<version>.zip` from [Releases](https://github.com/undergodst/gk2-move-buildings/releases)
+and extract it into the game folder (BepInEx must be installed).
+
 1. Open the building menu, pick **Move** (four-arrow icon).
 2. Hover a building (blue highlight), click it.
 3. Its ghost follows the cursor: rotate with the usual key, click to place. Free of charge.

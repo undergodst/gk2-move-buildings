@@ -13,6 +13,11 @@ ENGLISH
 This is a code mod. It needs BepInEx, a mod loader that is installed once into
 the game folder. The Workshop can't install BepInEx for you.
 
+QUICKEST WAY: download install.bat and double-click it:
+    https://github.com/undergodst/gk2-move-buildings/releases/latest/download/install.bat
+It installs BepInEx and GK2 Workshop Loader for you and opens the mod's page to
+subscribe. Then start the game and click Yes. The steps below do the same by hand.
+
 0. Back up your save
 --------------------
 Close the game and copy this folder somewhere safe:
@@ -88,6 +93,11 @@ winhttp.dll and doorstop_config.ini from the game folder.
 
 Это мод с кодом. Ему нужен BepInEx — загрузчик модов, который один раз ставится
 в папку игры. Мастерская сама его не устанавливает.
+
+САМЫЙ БЫСТРЫЙ СПОСОБ: скачайте install.bat и запустите двойным кликом:
+    https://github.com/undergodst/gk2-move-buildings/releases/latest/download/install.bat
+Он сам поставит BepInEx и GK2 Workshop Loader и откроет страницу мода, чтобы
+подписаться. Потом запустите игру и нажмите Yes. Шаги ниже делают то же вручную.
 
 0. Сделайте копию сейва
 -----------------------
