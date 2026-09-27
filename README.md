@@ -27,3 +27,8 @@ Log: `<game>/BepInEx/LogOutput.log`, lines tagged `GK2 Move Buildings`.
 `move_icon.png` and `move_cursor.png` are drawn by the scripts in `tools/` in the style of the game's
 build icons and cursors (32x32 pixel art; the icon sits in a 48x48 canvas like the game's sprites).
 `tools/mkcursor.py` recolours the game's own remove cursor, which you extract yourself as `remove_cursor_src.png`.
+
+## License
+
+MIT, see [LICENSE](LICENSE). Graveyard Keeper 2 and its assets belong to Lazy Bear Games; the cursor
+arrow is derived from the game's own cursor and is not covered by this license.
