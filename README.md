@@ -2,6 +2,8 @@
 
 BepInEx 5 mod for Graveyard Keeper 2 that adds a **Move** tile next to **Remove** in the building menu.
 
+**Steam Workshop:** https://steamcommunity.com/sharedfiles/filedetails/?id=3809174815
+
 1. Open the building menu, pick **Move** (four-arrow icon).
 2. Hover a building (blue highlight), click it.
 3. Its ghost follows the cursor: rotate with the usual key, click to place. Free of charge.
@@ -12,6 +14,11 @@ at dock points, workbench slot extensions (moved and re-seated in their slots, a
 conveyor links (rebuilt at the new spot) and conveyor-chest slot filters.
 
 Not movable: fight buildings, anything the game refuses to remove (quest-locked, auto-built belt pieces).
+
+## Workshop
+
+`workshop/` holds the cover (`preview.png`, drawn by `tools/mkcover.py`) and the item description (`description.bbcode`).
+The item is uploaded with the game's own creator (Shift+F11, enable it in `Mods/workshop.json`); its only type is "Translation".
 
 ## Build
 

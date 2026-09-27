@@ -1,0 +1,86 @@
+[h1]Move Buildings[/h1]
+Adds a [b]Move[/b] tile to the building menu, right next to [b]Remove[/b]. Pick a building, carry its ghost to a new spot, rotate it, place it. No more tearing down and rebuilding.
+
+[b]The building is not rebuilt — the same object is moved.[/b] Everything stays with it:
+[list]
+[*]chest contents, fuel and loaded items
+[*]the current craft and craft queue
+[*]zombie workers at the workbench (they come along)
+[*]workbench add-ons in their slots, e.g. furnace bellows — also when you rotate the building
+[*]conveyor links (rebuilt at the new spot) and conveyor chest slot filters
+[*]garden orders and building scripts
+[/list]
+
+[h2]How to use[/h2]
+[olist]
+[*]Open a building table and choose [b]Move[/b].
+[*]Hover a building (blue highlight) and click it.
+[*]Move the ghost, rotate it with the usual key, click to place. Moving is free.
+[*]Right click / Esc puts it back and lets you pick another one.
+[/olist]
+Buildings that can't be moved are shown grey.
+
+[h2]Installation[/h2]
+Requires [url=https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.5]BepInEx 5.4.23.5 (win_x64)[/url] in the game folder.
+[list]
+[*][b]With [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3807346541]GK2 Workshop Loader[/url]:[/b] subscribe and approve the mod when the loader asks.
+[*][b]Manually:[/b] copy [i]BepInEx\plugins\GK2MoveBuildings[/i] from this item into [i]<game folder>\BepInEx\plugins\[/i]. See INSTALL.txt.
+[/list]
+The Workshop type says "Translation" only because the game's upload tool has no other type. This is a code mod.
+
+[h2]Known limitations[/h2]
+[list]
+[*]Garden beds and beehives can't be moved yet.
+[*]Fight buildings and anything the game itself won't let you remove (quest-locked objects, auto-built belt pieces) can't be moved.
+[*]Items riding on an auto-built belt piece at the moment of the move are put back on the new piece, or dropped next to it if the spot is blocked.
+[/list]
+Back up your save before trying new mods. If something goes wrong, please post [i]BepInEx\LogOutput.log[/i] in the comments.
+
+Uninstall: delete [i]BepInEx\plugins\GK2MoveBuildings[/i]. Saves are not affected.
+
+Source code (MIT): [url=https://github.com/undergodst/gk2-move-buildings]github.com/undergodst/gk2-move-buildings[/url]
+Translated to all game languages.
+
+[hr][/hr]
+
+[h1]Перемещение построек[/h1]
+Добавляет в меню строительства плитку [b]«Переместить»[/b] рядом с [b]«Убрать»[/b]. Выберите постройку, перенесите её призрак на новое место, поверните и поставьте. Больше не нужно ломать и строить заново.
+
+[b]Постройка не пересоздаётся — переносится тот же объект.[/b] С ней остаётся всё:
+[list]
+[*]содержимое сундуков, топливо и загруженные предметы
+[*]текущий крафт и очередь крафта
+[*]зомби-работники у верстака (переходят вместе с ним)
+[*]пристройки в слотах верстака, например мехи у печи — в том числе при повороте
+[*]связи конвейера (восстанавливаются на новом месте) и фильтры слотов конвейерных сундуков
+[*]заказы на грядках и скрипты построек
+[/list]
+
+[h2]Как пользоваться[/h2]
+[olist]
+[*]Откройте стол строительства и выберите [b]«Переместить»[/b].
+[*]Наведите на постройку (синяя подсветка) и кликните.
+[*]Двигайте призрак, поворачивайте обычной клавишей, кликните, чтобы поставить. Перенос бесплатный.
+[*]ПКМ / Esc возвращает постройку на место и даёт выбрать другую.
+[/olist]
+Постройки, которые нельзя перенести, подсвечены серым.
+
+[h2]Установка[/h2]
+Нужен [url=https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.5]BepInEx 5.4.23.5 (win_x64)[/url] в папке игры.
+[list]
+[*][b]С [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3807346541]GK2 Workshop Loader[/url]:[/b] подпишитесь и подтвердите мод, когда загрузчик спросит.
+[*][b]Вручную:[/b] скопируйте [i]BepInEx\plugins\GK2MoveBuildings[/i] из этого предмета в [i]<папка игры>\BepInEx\plugins\[/i]. Подробнее в INSTALL.txt.
+[/list]
+Тип «Translation» стоит только потому, что другого в загрузчике игры нет. Это мод с кодом, а не перевод.
+
+[h2]Ограничения[/h2]
+[list]
+[*]Грядки и ульи пока не переносятся.
+[*]Боевые постройки и то, что игра сама не даёт убрать (объекты квестов, автоматические клетки конвейера), не переносятся.
+[*]Предметы на автоматической клетке конвейера в момент переноса кладутся на новую клетку, а если место занято — на землю рядом.
+[/list]
+Перед установкой новых модов сделайте копию сейва. Если что-то пошло не так, приложите [i]BepInEx\LogOutput.log[/i] в комментариях.
+
+Удаление: удалите [i]BepInEx\plugins\GK2MoveBuildings[/i]. Сохранения не пострадают.
+
+Исходный код (MIT): [url=https://github.com/undergodst/gk2-move-buildings]github.com/undergodst/gk2-move-buildings[/url]
