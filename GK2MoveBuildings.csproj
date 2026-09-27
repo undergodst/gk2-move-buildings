@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>GK2MoveBuildings</AssemblyName>
+    <RootNamespace>GK2MoveBuildings</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <Version>0.4.4</Version>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <!-- Override on the command line: dotnet build -p:GameDir="..." -->
+    <GameDir Condition="'$(GameDir)' == ''">/mnt/d/Steam/steamapps/common/Graveyard Keeper 2</GameDir>
+    <ManagedDir>$(GameDir)/GraveyardKeeper2_Data/Managed</ManagedDir>
+    <BepInExDir>$(GameDir)/BepInEx</BepInExDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="BepInEx" HintPath="$(BepInExDir)/core/BepInEx.dll" Private="false" />
+    <Reference Include="0Harmony" HintPath="$(BepInExDir)/core/0Harmony.dll" Private="false" />
+    <!-- All game/Unity assemblies; BCL facades come from the SDK. -->
+    <Reference Include="$(ManagedDir)/*.dll" Exclude="$(ManagedDir)/System*.dll;$(ManagedDir)/mscorlib.dll;$(ManagedDir)/netstandard.dll;$(ManagedDir)/Mono.*.dll;$(ManagedDir)/Microsoft.*.dll" Private="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PluginAsset Include="move_*.png" />
+  </ItemGroup>
+
+  <Target Name="DeployToGame" AfterTargets="Build" Condition="'$(Deploy)' == 'true'">
+    <MakeDir Directories="$(BepInExDir)/plugins/GK2MoveBuildings" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(BepInExDir)/plugins/GK2MoveBuildings" />
+    <Copy SourceFiles="@(PluginAsset)" DestinationFolder="$(BepInExDir)/plugins/GK2MoveBuildings" />
+  </Target>
+
+</Project>
