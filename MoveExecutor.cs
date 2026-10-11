@@ -53,6 +53,7 @@ namespace GK2MoveBuildings
 				return false;
 			}
 			WgoData data = wgo.Data;
+			HomeSpot.RememberBeforeFirstMove(data);
 			Vector3 oldPosition = data.Position;
 			Vector3 delta = plan.NewPosition - oldPosition;
 			bool parentRotates = IsStateChange(data, plan.VariationId, plan.RotationIndex);

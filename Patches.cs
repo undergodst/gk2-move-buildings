@@ -223,6 +223,10 @@ namespace GK2MoveBuildings
 	{
 		private static void Postfix(WgoBuildPointer __instance)
 		{
+			if (!GameAccess.IsShownAsActive(__instance) && MoveSession.AllowHomeSpot(__instance))
+			{
+				GameAccess.MarkAvailable(__instance);
+			}
 			if (GameAccess.IsShownAsActive(__instance) && MoveSession.SlotsBlocked(__instance))
 			{
 				GameAccess.MarkUnavailable(__instance);

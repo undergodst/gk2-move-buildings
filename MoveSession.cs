@@ -53,6 +53,21 @@ namespace GK2MoveBuildings
 			return IsPlacementPointer(pointer) && slotPlans.Count > 0 && !MoveExecutor.AreSlotsFree(pointer.Target, slotPlans, Original);
 		}
 
+		/// <summary>WgoBuildPointer.UpdateSelectionCellsState postfix: the building's home spot is accepted even where vanilla rules refuse it.</summary>
+		public static bool AllowHomeSpot(WgoBuildPointer pointer)
+		{
+			if (!IsPlacementPointer(pointer) || Original == null || Original.Data == null || !HomeSpot.IsGhostAtHome(Original.Data, pointer.Target, out _))
+			{
+				return false;
+			}
+			// Slot extensions belong in their parent's slot, not on a remembered spot.
+			if (!MoveRules.TryGetPlaceDef(Original.Data, out BuildingDef def) || def.chooseCustomBuildAreaType == BuildingDef.BuildAreaChoosingType.FullCoverSoft)
+			{
+				return false;
+			}
+			return HomeSpot.IsFootprintFree(pointer, Original, def);
+		}
+
 		/// <summary>BuildPointer.Rotate prefix, only while the player is placing.</summary>
 		public static void OnPlayerRotate()
 		{
@@ -230,6 +245,12 @@ namespace GK2MoveBuildings
 				plan.RotationIndex = ghost.MainWgoPart.WgoPartData.rotationIndex;
 			}
 			ApplyBuildAreaRotationRequirement(pointer, plan);
+			if (HomeSpot.IsGhostAtHome(Original.Data, ghost, out Vector3 home))
+			{
+				// Back onto the exact spot it came from, even if that is off the build grid.
+				plan.NewPosition = home;
+				Plugin.Log.LogInfo($"[{Original.Data.id}] returns to its original spot {home}");
+			}
 			WgoPartData originalPart = Original.Data.MainWgoPartData;
 			Plugin.Log.LogInfo($"Commit [{Original.Data.id}]: original {originalPart.variationId}/{originalPart.rotationIndex}, ghost {ghost.MainWgoPart?.WgoPartData?.variationId}/{ghost.MainWgoPart?.WgoPartData?.rotationIndex}, applying {plan.VariationId}/{plan.RotationIndex}");
 			BuildArea slotArea = BuildController.Instance.CurrentFullCoverSoftHintArea;

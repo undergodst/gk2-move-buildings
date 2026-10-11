@@ -200,9 +200,37 @@ namespace GK2MoveBuildings
 			pointerUpdateCellStatus.Invoke(pointer, null);
 		}
 
+		/// <summary>Marks the ghost as placeable (green cells), overriding the vanilla availability check.</summary>
+		public static void MarkAvailable(BuildPointerObject pointer)
+		{
+			pointerShownAsActive.SetValue(pointer, true);
+			pointerUpdateCellStatus.Invoke(pointer, null);
+		}
+
 		public static bool IsShownAsActive(BuildPointerObject pointer)
 		{
 			return (bool)pointerShownAsActive.GetValue(pointer);
+		}
+
+		private static readonly FieldInfo pointerCells = AccessTools.Field(typeof(BuildPointerObject), "cells");
+
+		private static readonly FieldInfo wgoPointerBuildColliders = AccessTools.Field(typeof(WgoBuildPointer), "buildColliders");
+
+		private static readonly FieldInfo wgoPointerOverlapMask = AccessTools.Field(typeof(WgoBuildPointer), "overlapMask");
+
+		public static List<BuildSelectionCell> GetCells(BuildPointerObject pointer)
+		{
+			return pointerCells.GetValue(pointer) as List<BuildSelectionCell>;
+		}
+
+		public static List<Collider> GetBuildColliders(WgoBuildPointer pointer)
+		{
+			return wgoPointerBuildColliders.GetValue(pointer) as List<Collider>;
+		}
+
+		public static int GetOverlapMask(WgoBuildPointer pointer)
+		{
+			return (int)wgoPointerOverlapMask.GetValue(pointer);
 		}
 
 		public static bool ArePartsLoaded(Wgo wgo)
