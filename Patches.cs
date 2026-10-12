@@ -88,6 +88,12 @@ namespace GK2MoveBuildings
 			}
 			if (!MoveSession.IsPlacementPointer(__instance))
 			{
+				if (GameAccess.IsShownAsActive(__instance) && HomeSpot.TryFindBuildSpot(__instance, out Vector3 spot))
+				{
+					// Build exactly on the remembered spot, even if that is off the build grid.
+					__instance.Target.Data.Position = spot;
+					Plugin.Log.LogInfo($"Building [{__instance.BuildData.WgoId}] on remembered spot {spot}");
+				}
 				return true;
 			}
 			MoveSession.RequestCommit(__instance);
@@ -223,7 +229,7 @@ namespace GK2MoveBuildings
 	{
 		private static void Postfix(WgoBuildPointer __instance)
 		{
-			if (!GameAccess.IsShownAsActive(__instance) && MoveSession.AllowHomeSpot(__instance))
+			if (!GameAccess.IsShownAsActive(__instance) && (MoveSession.AllowHomeSpot(__instance) || HomeSpot.AllowBuildSpot(__instance)))
 			{
 				GameAccess.MarkAvailable(__instance);
 			}

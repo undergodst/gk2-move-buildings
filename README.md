@@ -18,8 +18,11 @@ and extract it into the game folder (BepInEx must be installed).
 3. Its ghost follows the cursor: rotate with the usual key, click to place. Free of charge.
 4. Right click / Esc during placement puts it back and returns to selection.
 
-A building can always be moved back onto the spot it stood on before its first move (remembered in the save),
-even where the game's build rules don't allow building, e.g. a broken wheel that was repaired in place.
+A spot a building was moved away from stays usable, even where the game's build rules don't allow building
+(e.g. the two zombie carousels you repair in place stand outside the carousel slots): the building can be moved
+back onto it, and a new one of the same kind can be built there. Free remembered spots are highlighted green like
+free slots. The spot is remembered in the save on the first move; the two carousel spots are known to the mod, so
+they work even if the carousel was moved with an older version.
 
 What is preserved: the object itself (same id), chest contents, fuel, craft queue, zombie workers
 at dock points, workbench slot extensions (moved and re-seated in their slots, also when rotated), garden orders, building scripts,

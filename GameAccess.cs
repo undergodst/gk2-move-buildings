@@ -185,6 +185,12 @@ namespace GK2MoveBuildings
 			removeTintHex.SetValue(pointer, hex);
 		}
 
+		/// <summary>The vanilla resources-and-limits check the pointer starts its availability with.</summary>
+		public static bool CanTakeResources(WgoBuildPointer pointer)
+		{
+			return !(wgoPointerCanTakeResources.GetValue(pointer) is Func<bool> check) || check();
+		}
+
 		public static void MakePlacementFree(WgoBuildPointer pointer)
 		{
 			wgoPointerCanTakeResources.SetValue(pointer, (Func<bool>)(() => true));

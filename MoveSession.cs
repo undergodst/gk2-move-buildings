@@ -56,12 +56,11 @@ namespace GK2MoveBuildings
 		/// <summary>WgoBuildPointer.UpdateSelectionCellsState postfix: the building's home spot is accepted even where vanilla rules refuse it.</summary>
 		public static bool AllowHomeSpot(WgoBuildPointer pointer)
 		{
-			if (!IsPlacementPointer(pointer) || Original == null || Original.Data == null || !HomeSpot.IsGhostAtHome(Original.Data, pointer.Target, out _))
+			if (!IsPlacementPointer(pointer) || Original == null || Original.Data == null || !HomeSpot.TryFindSpot(Original.Data.id, Original.Data, pointer.Target, out _))
 			{
 				return false;
 			}
-			// Slot extensions belong in their parent's slot, not on a remembered spot.
-			if (!MoveRules.TryGetPlaceDef(Original.Data, out BuildingDef def) || def.chooseCustomBuildAreaType == BuildingDef.BuildAreaChoosingType.FullCoverSoft)
+			if (!MoveRules.TryGetPlaceDef(Original.Data, out BuildingDef def))
 			{
 				return false;
 			}
@@ -245,11 +244,11 @@ namespace GK2MoveBuildings
 				plan.RotationIndex = ghost.MainWgoPart.WgoPartData.rotationIndex;
 			}
 			ApplyBuildAreaRotationRequirement(pointer, plan);
-			if (HomeSpot.IsGhostAtHome(Original.Data, ghost, out Vector3 home))
+			if (HomeSpot.TryFindSpot(Original.Data.id, Original.Data, ghost, out Vector3 spot))
 			{
-				// Back onto the exact spot it came from, even if that is off the build grid.
-				plan.NewPosition = home;
-				Plugin.Log.LogInfo($"[{Original.Data.id}] returns to its original spot {home}");
+				// Onto the exact remembered spot, even if that is off the build grid.
+				plan.NewPosition = spot;
+				Plugin.Log.LogInfo($"[{Original.Data.id}] goes onto remembered spot {spot}");
 			}
 			WgoPartData originalPart = Original.Data.MainWgoPartData;
 			Plugin.Log.LogInfo($"Commit [{Original.Data.id}]: original {originalPart.variationId}/{originalPart.rotationIndex}, ghost {ghost.MainWgoPart?.WgoPartData?.variationId}/{ghost.MainWgoPart?.WgoPartData?.rotationIndex}, applying {plan.VariationId}/{plan.RotationIndex}");
