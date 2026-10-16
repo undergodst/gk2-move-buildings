@@ -76,6 +76,8 @@ namespace GK2MoveBuildings
 		{
 			yield return AccessTools.Method(typeof(WgoBuildPointer), nameof(WgoBuildPointer.TryDoBuildAction));
 			yield return AccessTools.Method(typeof(ConveyorBuildPointer), nameof(ConveyorBuildPointer.TryDoBuildAction));
+			// Barracks layout (FightBuilding) pointers have their own build action.
+			yield return AccessTools.Method(typeof(MilitaryBaseBuildPointer), nameof(MilitaryBaseBuildPointer.TryDoBuildAction));
 		}
 
 		private static bool Prefix(WgoBuildPointer __instance, ref bool __result)

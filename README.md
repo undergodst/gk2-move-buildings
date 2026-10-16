@@ -28,7 +28,8 @@ What is preserved: the object itself (same id), chest contents, fuel, craft queu
 at dock points, workbench slot extensions (moved and re-seated in their slots, also when rotated), garden orders, building scripts,
 conveyor links (rebuilt at the new spot) and conveyor-chest slot filters.
 
-Not movable: fight buildings, anything the game refuses to remove (quest-locked, auto-built belt pieces).
+Not movable: buildings that only exist during a fight, graves, columbaria and the crypt, anything the game refuses to remove (quest-locked, auto-built belt pieces).
+Barracks defences (barricades, towers) can be moved between fights; the next fight uses the new layout.
 
 ## Workshop
 

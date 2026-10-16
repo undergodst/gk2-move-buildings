@@ -6,7 +6,7 @@
     <RootNamespace>GK2MoveBuildings</RootNamespace>
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
-    <Version>0.4.6</Version>
+    <Version>0.4.7</Version>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>

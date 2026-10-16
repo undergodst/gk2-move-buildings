@@ -10,7 +10,7 @@ namespace GK2MoveBuildings
 	{
 		public const string Guid = "gk2.movebuildings";
 		public const string Name = "GK2 Move Buildings";
-		public const string Version = "0.4.6";
+		public const string Version = "0.4.7";
 
 		internal static ManualLogSource Log;
 

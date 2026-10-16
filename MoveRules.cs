@@ -9,12 +9,50 @@ namespace GK2MoveBuildings
 		public static bool TryGetPlaceDef(WgoData data, out BuildingDef def)
 		{
 			def = null;
-			if (data == null || GameBalance.Me == null || !GameBalance.Me.buildableWgos.TryGetValue(data.id, out def) || def == null)
+			if (data == null || GameBalance.Me == null)
 			{
 				return false;
 			}
-			// Fight buildings are registered in militaryBaseData and only exist during fights; leave them alone.
-			return def.buildingMode == BuildingDef.BuildingMode.Place || def.buildingMode == BuildingDef.BuildingMode.ConveyorPlace;
+			if (!GameBalance.Me.buildableWgos.TryGetValue(data.id, out def) || def == null)
+			{
+				def = GetSiteDef(data.id);
+				if (def == null)
+				{
+					return false;
+				}
+			}
+			// Fight-time buildings (*_fight, FightingPlace) only exist during a fight; leave them alone.
+			// The barracks layout they are made from (*_pre, FightBuilding) is ordinary.
+			return def.buildingMode == BuildingDef.BuildingMode.Place || def.buildingMode == BuildingDef.BuildingMode.ConveyorPlace || def.buildingMode == BuildingDef.BuildingMode.FightBuilding;
+		}
+
+		private static Dictionary<string, BuildingDef> siteDefs;
+
+		/// <summary>
+		/// Objects only built through a construction site (corpse pallets, altars, hives...) have no placement
+		/// definition of their own; the site's definition shows the finished object as its preview and carries
+		/// the build-area rules, so it is the one to place them with.
+		/// </summary>
+		private static BuildingDef GetSiteDef(string wgoId)
+		{
+			if (siteDefs == null)
+			{
+				siteDefs = new Dictionary<string, BuildingDef>();
+				foreach (BuildingDef def in GameBalance.Me.buildingDefs)
+				{
+					if (def != null && def.buildingMode == BuildingDef.BuildingMode.Place && !string.IsNullOrEmpty(def.customWgoPlacePreview) && !IsBurial(def.customWgoPlacePreview) && !GameBalance.Me.buildableWgos.ContainsKey(def.customWgoPlacePreview) && !siteDefs.ContainsKey(def.customWgoPlacePreview))
+					{
+						siteDefs.Add(def.customWgoPlacePreview, def);
+					}
+				}
+			}
+			return siteDefs.TryGetValue(wgoId, out BuildingDef found) ? found : null;
+		}
+
+		/// <summary>Graves, columbaria and the crypt hold bodies and count toward graveyard quality; not handled yet.</summary>
+		private static bool IsBurial(string wgoId)
+		{
+			return wgoId.StartsWith("grave_") || wgoId.StartsWith("graveyard_columbarium") || wgoId.StartsWith("graveyard_crypt");
 		}
 
 		private static readonly HashSet<string> diagnosed = new HashSet<string>();
